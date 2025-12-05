@@ -2,13 +2,12 @@ name: Generate Snake
 
 on:
   schedule:
-    - cron: "0 */12 * * *"   # jalan tiap 12 jam (ubah kalau mau)
-  workflow_dispatch:         # bisa dijalankan manual lewat Actions tab
+    - cron: "0 */12 * * *"   # update tiap 12 jam
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -18,7 +17,7 @@ jobs:
       - name: Generate contribution snake SVG
         uses: Platane/snk@v3
         with:
-          github_user_name: adityaalif-1011   # GANTI jadi username GitHub kamu jika perlu
+          github_user_name: adityaalif-1011   # GANTI jika username beda
           outputs: dist/github-contribution-grid-snake.svg
 
       - name: Commit generated SVG to 'output' branch
